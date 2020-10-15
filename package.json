@@ -19,6 +19,6 @@
   "homepage": "https://github.com/marinamare/reprogramaSemana7#readme",
   "devDependencies": {
     "express": "^4.17.1",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.5"
   }
 }
