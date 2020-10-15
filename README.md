@@ -1,71 +1,35 @@
-# reprogramaSemana7
+# AtividadeSemana9 :books: :green_book:
 
-# atividadeSemana7 :books: :green_book:
-//
+No último domingo, em nossa nono aulão de back-end, relembramos os conceitos de HTTP (bem como do protocolo TCP/IP) e demos início ao aprendizado dos métodos post e delete. A fim de consolidar esse conhecimento, nos foi proposto um exercício de criação de controle de estoque e de funcionários para uma livraria.
+
 ### :memo: Briefing 
 
-A partir de pelo menos três dos dez arquivos .json desenvolvidos na semana 6 estruturar
-servidores locais utilizando a arquitetura MVC adaptada apresentada em aula bem como a
-função **express** que facilita a criação de servidores.  
+Você foi contratada para fazer a implementação de um sistema de uma livraria no centro de Recife. 
 
-### :notebook: É possível encontrar nesse repositório: 
+1 - A contratante espera que no sistema ela possa fazer a inclusão de seu estoque contendo as seguintes informações: 
 
-- [x] 3 servidores diferentes e funcionais; 
-- [x] A arquitetura MVC adaptada, sem a pasta de view; 
+Livros:
 
+2 - A mesma livraria decidiu integrar um sisteminha em que será possível a adição de seus funcionários. A contratante espera que no sistema ela possa fazer a inclusão dos dados de cada um deles, contendo:
 
-const equipe = require('../model/equipe.json');
-const fs = require("fs");
+Funcionários:
 
-const getTodaEquipe = (req, res) => {
-    console.log(req.url);
-    res.send(200).send(equipe);
-};
+3 - Nossa livraria gostaria de garantir que será possível a exclusão do registro de determinado livro.
 
-const getPessoaById = (req, res) => {
-    const id = req.params.id;
+4 - Eles também desejam que seja possível a exclusão do registro de um funcionário. 
 
-    res.status(200).send(equipe.find((pessoa) => pessoa.id == id))
-}
+5 - Nossa contatante espera que seja possível o acesso a uma lista completa com todos os livros do estoque.
 
-const postPessoa = (req, res) => {
-    const { id, nome, sobrenome, aniversario, primeiroDiaDeClubeDoLivro, signoSol, signoAscendente, status} = req.body;
+6 - Eles também adorariam ter acesso a uma lista com todos os funcionários.
 
-    equipe.push({ id, nome, sobrenome, aniversario, primeiroDiaDeClubeDoLivro, signoSol, signoAscendente, status })
+7 - Seria de grande valia se nossa livaria tivesse acesso a uma lista com todos os livros por categoria. 
 
-    fs.writeFile("./src/model/equipe.json", JSON.stringify(equipe), 'utf8', function(err){ 
-        if(err){
-            return res.status(424).send({ message: err });
-        }
-        console.log("Arquivo atualizado com sucesso!");
-    });
-    res.status(201).send(equipe);
-};
+8 - A livaria gostaria de ter acesso a idade de um funcionário, de acordo com seu id. 
 
-const deletePessoa = (req, res) => {
-    const id = req.params.id;
-    try{
-    const pessoaASerDeletada = equipe.find((pessoaASerDeletada) => pessoaASerDeletada.id == id);
+**Observação:** Popule nosso model de livros e funcionários com pelo menos 10 registros em cada.
 
-    const index = equipe.indexOf(pessoaASerDeletada);
+### :notebook: É possível encontrar código a seguir: 
 
-    equipe.splice(index, 1);
+- [x] Um exemplo da autilização do modelo de **arquitetura da informação** *MVC (Model Viewer Controller)* com o objetivo de facilitar a separação entre a interface do usuário e as regras do negócio;
 
-    fs.writeFile("./src/model/equipe.json", JSON.stringify(equipe), "utf8", function(err) {
-        if (err) {
-            return res.status(424).send({ message: err });
-        }
-        console.log("Equipe atualizada com sucesso!");
-    })
-    res.status(200).send(equipe);
-} catch(err) {
-    return res.status(424).send({ message: "erro ao deletar o registro da tarefa" })
-}}
-
-
-module.exports = {
-    getTodaEquipe, 
-    getPessoaById,
-    postPessoa,
-    deletePessoa
-}
+- [x] ...
